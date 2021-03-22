@@ -17,5 +17,5 @@ public class FilterProducts {
         PageFactory.initElements(driver, this);
     }
 
-    public void  
+    /**public void  **/
 }
