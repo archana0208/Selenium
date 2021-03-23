@@ -1,32 +1,39 @@
 package tests;
 
 import general.BaseTest;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import pages.FilterProducts;
 import pages.HomePage;
 import pages.SearchProducts;
-
+@Listeners(general.Listners.class)
 public class searchProductTest extends BaseTest {
 
     @Test
      public void verifySearchResult()
     {
-        /**1. Open url.
-         2. Enter the text ruby to be searched
-         3. Click on search button
-         4. Verify if correct search results are displayed
-            4.1 Get the text of each elements
-            4.2 Compare it with input.
-            4.3 If any text does not contain text then mark test case fail otherwise pass.**/
-
         HomePage home = new HomePage(driver);
         home.enterSearchText("Ruby");
         home.clickSearchButton();
         SearchProducts sp= new SearchProducts(driver);;
-        Assert.assertTrue(sp.findTextInAllSearchElements("Apache"),"Correct Search Results");
-
-
+        Assert.assertTrue(sp.findTextInAllSearchElements("Ruby"),"Correct Search Results");
+        home.enterSearchText("Apache");
+        home.clickSearchButton();
+        Assert.assertTrue(sp.findTextInAllSearchElements("Apach"),"Correct Search Results");
 
     }
+
+    @Test
+    public void filterProduct()
+    {
+        FilterProducts product = new FilterProducts(driver);
+        product.selectCategory("Bags");
+        product.selectPriceRange();
+        product.hitSubmittButton();
+    }
+
+
 
 }

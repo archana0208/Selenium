@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    public WebDriver driver;
+    public static WebDriver driver;
 
     @BeforeTest
     public void initaliseBrowser() {
@@ -24,22 +24,20 @@ public class BaseTest {
     }
 
     @AfterTest
-    public void teardown() {
-        driver.quit();
-    }
 
-    public void Screenshots(ITestResult result) {
+   /** public static void screenshots(ITestResult result) {
         if (ITestResult.FAILURE == result.getStatus()) {
             try {
                 TakesScreenshot screenshot = (TakesScreenshot) driver;
                 File src = screenshot.getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(src, new File("/Users/archanashirsat/IdeaProjects/SeleniumWebdriver/src/screenshots" + result.getName() + ".png"));
+                FileUtils.copyFile(src, new File("./screenshots" + result.getName() + ".png"));
                 System.out.println("Successfully captured a screenshot");
             } catch (Exception e) {
                 System.out.println("Exception while taking screenshot " + e.getMessage());
             }
         }
-
-
+    }**/
+    public void teardown() {
+        driver.quit();
     }
 }

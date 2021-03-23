@@ -33,7 +33,7 @@ public class SearchProducts {
     }
 
 
-   /** @DataProvider(name="searchElement")
+  /** @DataProvider(name="searchElement")
     public Object[][] createData1() {
         return new Object[][] {
                 { "Ruby" }, {"Apache"},
